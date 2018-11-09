@@ -2,30 +2,38 @@
 
 const TOTAL_FUNCTIONS_NUMBER = 17;
 
-var renderIndex = 17;
+var renderIndex = 1;
 var radius = 600;
 
 var circleRender = [];
 var isLeftPressed = false;
 var isRightPressed = false;
 
-function setup() {
-    createCanvas(1900, 1000);
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+    background(255);
+    circleRender[renderIndex](width / 2, height / 2, radius);
 }
 
+function setup() {
+    createCanvas(windowWidth, windowHeight);
+}
+var t =0;
 function draw() {
-    if (isLeftPressed) {
-        background(255);
-        renderIndex++;
-        console.log(renderIndex);
-        if (renderIndex > TOTAL_FUNCTIONS_NUMBER) renderIndex = 0;
-        circleRender[renderIndex](width / 2, height / 2, radius);
-        isLeftPressed = false;
-    }
-    if (keyIsPressed) {
-        background(255);
-        circleRender[renderIndex](width / 2, height / 2, radius);
-    }
+//    if (isLeftPressed) {
+//        background(255);
+//        renderIndex++;
+//        console.log(renderIndex);
+//        if (renderIndex > TOTAL_FUNCTIONS_NUMBER) renderIndex = 0;
+//        circleRender[renderIndex](width / 2, height / 2, radius);
+//        isLeftPressed = false;
+//    }
+//    if (keyIsPressed) {
+//        background(255);
+//        circleRender[renderIndex](width / 2, height / 2, radius);
+//    }
+    background(255);
+    wavyLine(0,0,width,height);
 }
 
 function randomFullDegree() {
@@ -66,18 +74,20 @@ circleRender[0] = function (x, y, radius) {
     ellipse(x, y, radius, radius);
 }
 circleRender[1] = function (x, y, radius) {
-    var num = 300;
+    var num = 100;
 
     for (let i = 0; i < num; i++) {
         let theta = Math.PI * 2 / num * i;
-        line(x, y, x + radius / 2 * cos(theta), y + radius / 2 * sin(theta));
+        noFill();
+        stroke(255,0,0,100);
+        strokeWeight(2);
+        lineAtRatio(x, y, x + radius / 2 * cos(theta), y + radius / 2 * sin(theta),t/200);
     }
 }
 circleRender[2] = function (x, y, radius) {
     var num = 20;
     var start = 1;
     var theta = randomFullDegree();
-
     for (let i = start; i < num; i++) {
         var ratio = i / num;
         noFill();
@@ -358,6 +368,7 @@ circleRender[17] = function (x, y, radius) {
     }
 }
 
+
 function spiral(x, y, radius, circleNumber, startTheta = 0) {
     var num = 1000;
     var point;
@@ -377,4 +388,17 @@ function mouseClicked() {
         isLeftPressed = true;
     if (mouseClicked === RIGHT)
         isRightPressed = true;
+}
+function mapBetween(start,end,ratio){
+    return start+(end-start)*ratio;
+}
+function lineAtRatio(x1,y1,x2,y2,ratio){
+    if (ratio>1) ratio=1;
+    line (x1,y1,mapBetween(x1,x2,ratio),mapBetween(y1,y2,ratio));
+}
+function wavyLine(x1,y1,x2,y2,intervals){
+    d=distance(x1,y1,x2,y2);
+    var num =  Math.floor(d/intervals);
+    beginShape();
+    endShape();
 }

@@ -18,11 +18,22 @@
 
     <script src="../perlin.js"></script>
     <script src="../class/particle.js"></script>
-    <script src="sketch.js"></script>
+
+	 <script>
+	  function draw(){
+		  var canvas  = document.getElementById("canvas");
+		  if (canvas.getContext){
+			  var ctx = canvas.getContext("2d");
+			  
+			  ctx.fillsize = "rgb(200,0,0)";
+			  ctx.fillRect = (100,100,550,500);
+		  }
+	  }
+		 
+	  </script>
 
 </head>
 
-<body>
-	
+<body onload = "draw()">
 </body>
 </html>

@@ -1,0 +1,22 @@
+{
+  "name": "moduleart",
+  "version": "1.0.0",
+  "description": "",
+  "main": "PatternTranslate.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/time0freedom/moduleArt.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/time0freedom/moduleArt/issues"
+  },
+  "homepage": "https://github.com/time0freedom/moduleArt#readme",
+  "dependencies": {
+    "jquery": "^3.3.1"
+  }
+}

@@ -11,7 +11,6 @@ var isRightPressed = false;
 function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
     background(255);
-    circleRender[renderIndex](width / 2, height / 2, radius);
 }
 
 function setup() {
@@ -19,18 +18,6 @@ function setup() {
 }
 var t =0;
 function draw() {
-//    if (isLeftPressed) {
-//        background(255);
-//        renderIndex++;
-//        console.log(renderIndex);
-//        if (renderIndex > TOTAL_FUNCTIONS_NUMBER) renderIndex = 0;
-//        circleRender[renderIndex](width / 2, height / 2, radius);
-//        isLeftPressed = false;
-//    }
-//    if (keyIsPressed) {
-//        background(255);
-//        circleRender[renderIndex](width / 2, height / 2, radius);
-//    }
     background(255);
     wavyLine(0,0,width,height);
 }
